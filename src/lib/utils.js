@@ -20,7 +20,6 @@ export async function getContentForUsername(username) {
 
 export async function saveContentForUsername({ content, username }) {
   try {
-    console.log("save");
     const docRef = doc(db, "dontcode", username);
     await setDoc(docRef, { content }, { merge: true });
   } catch (error) {
