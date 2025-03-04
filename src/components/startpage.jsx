@@ -19,17 +19,23 @@ export default function Startpage() {
   }
 
   return (
-    <>
-      <div>Enter your name</div>
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          placeholder="username"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-        />
-        <button type="submit">Submit</button>
-      </form>
-    </>
+    <form
+      onSubmit={handleSubmit}
+      className="flex flex-row items-center h-full w-full gap-2"
+    >
+      <input
+        type="text"
+        placeholder="stop coding"
+        value={username}
+        onChange={(e) => setUsername(e.target.value)}
+        className="border border-white rounded p-2 w-full focus:outline-double focus:outline-4 focus:outline-offset-2 focus:outline-sky-500 text-sky-500"
+      />
+      <button
+        type="submit"
+        className="h-full rounded bg-white text-black p-2 hover:bg-sky-500 hover:cursor-pointer transition-all"
+      >
+        Submit
+      </button>
+    </form>
   );
 }
