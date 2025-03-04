@@ -2,6 +2,7 @@
 
 import { saveContentForUsername } from "@/lib/utils";
 import { useEffect, useRef, useState } from "react";
+import ThemeSwitch from "./theme-switch";
 
 export default function CodeBox({ content, username }) {
   const [contentCopy, setContentCopy] = useState(content);
@@ -52,19 +53,22 @@ export default function CodeBox({ content, username }) {
 
   return (
     <div className="h-full w-full flex flex-col gap-0 items-center justify-center">
-      <div className="w-full flex flex-row justify-between p-2 bg-sky-500 text-white items-center">
+      <div className="w-full flex flex-row justify-between p-2 bg-sky-500 text-foreground items-center">
         <p className="tracking-widest font-extrabold">{username} :)</p>
-        <button
-          type="button"
-          onClick={handleSave}
-          className="bg-white rounded text-sky-950 hover:bg-sky-200 font-extrabold py-2 px-4 transition-all"
-        >
-          ctrl + s
-        </button>
+        <div className="flex flex-row items-center justify-center gap-2">
+          <ThemeSwitch />
+          <button
+            type="button"
+            onClick={handleSave}
+            className="bg-white rounded text-sky-950 hover:bg-sky-200 font-extrabold py-2 px-4 transition-all"
+          >
+            ctrl + s
+          </button>
+        </div>
       </div>
       <div className="p-2 size-full">
         <textarea
-          className="border border-white rounded-lg p-2 w-full h-full resize-none focus:outline-2 focus:outline-dashed focus:outline-offset-2 focus:outline-sky-500"
+          className="border border-foreground bg-transparent rounded-lg p-2 w-full h-full resize-none focus:outline-2 focus:outline-dashed focus:outline-offset-2 focus:outline-sky-500"
           value={contentCopy}
           spellCheck="false"
           onChange={handleChange}
