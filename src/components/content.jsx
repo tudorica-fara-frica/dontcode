@@ -51,6 +51,23 @@ export default function CodeBox({ content, username }) {
     }
   }
 
+  function handleKeyDown(e) {
+    if (e.key === "Tab") {
+      e.preventDefault();
+
+      const { selectionStart, selectionEnd } = e.target;
+      const newText =
+        contentCopy.substring(0, selectionStart) +
+        "\t" +
+        contentCopy.substring(selectionEnd);
+
+      setContentCopy(newText);
+
+      const newCursorPosition = selectionStart + 1;
+      e.target.setSelectionRange(newCursorPosition, newCursorPosition);
+    }
+  }
+
   return (
     <div className="h-full w-full flex flex-col gap-0 items-center justify-center">
       <div className="w-full flex flex-row justify-between p-2 bg-sky-500 text-foreground items-center">
@@ -68,8 +85,9 @@ export default function CodeBox({ content, username }) {
       </div>
       <div className="p-2 size-full">
         <textarea
-          className="border border-foreground bg-transparent rounded-lg p-2 w-full h-full resize-none focus:outline-2 focus:outline-dashed focus:outline-offset-2 focus:outline-sky-500"
+          className="border border-foreground text-sm bg-transparent rounded-lg p-2 w-full h-full resize-none focus:outline-2 focus:outline-dashed focus:outline-offset-2 focus:outline-sky-500"
           value={contentCopy}
+          onKeyDown={handleKeyDown}
           spellCheck="false"
           onChange={handleChange}
         />
