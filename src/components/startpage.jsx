@@ -10,13 +10,8 @@ export default function Startpage() {
 
   function handleSubmit(e) {
     e.preventDefault();
-    try {
-      router.push(`/${username}`);
-      setUsername("");
-    } catch (error) {
-      console.error(error);
-      router.refresh();
-    }
+    router.push(`/${username}`);
+    setUsername("");
   }
 
   return (
