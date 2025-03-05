@@ -1,4 +1,4 @@
-import { Danfo, Comfortaa } from "next/font/google";
+import { Danfo, Comfortaa, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { Provider } from "@/components/theme-provider";
 

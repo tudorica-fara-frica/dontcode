@@ -1,5 +1,11 @@
 "use client";
 
+import { Geist_Mono } from "next/font/google";
+
+export const mono = Geist_Mono({
+  subsets: ["latin"],
+});
+
 import { saveContentForUsername } from "@/lib/utils";
 import { useEffect, useRef, useState } from "react";
 import ThemeSwitch from "./theme-switch";
@@ -85,7 +91,7 @@ export default function CodeBox({ content, username }) {
       </div>
       <div className="p-2 size-full">
         <textarea
-          className="border border-foreground text-sm bg-transparent rounded-lg p-2 w-full h-full resize-none focus:outline-2 focus:outline-dashed focus:outline-offset-2 focus:outline-sky-500"
+          className={`border border-foreground ${mono.className} text-sm bg-transparent rounded-lg p-2 w-full h-full resize-none focus:outline-2 focus:outline-dashed focus:outline-offset-2 focus:outline-sky-500`}
           value={contentCopy}
           onKeyDown={handleKeyDown}
           spellCheck="false"
