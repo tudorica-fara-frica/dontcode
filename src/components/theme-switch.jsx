@@ -21,19 +21,23 @@ export default function ThemeSwitch() {
 
   if (resolvedTheme === "dark") {
     return (
-      <HiOutlineSun
-        className="size-6 cursor-pointer"
+      <div
+        className="p-3 h-full hover:border-sky-500 border border-transparent flex items-center justify-center transition-all rounded-full cursor-pointer hover:bg-sky-500/20"
         onClick={() => setTheme("light")}
-      />
+      >
+        <HiOutlineSun className="size-6" />
+      </div>
     );
   }
 
   if (resolvedTheme === "light") {
     return (
-      <HiOutlineMoon
-        className="size-6 cursor-pointer"
+      <div
+        className="p-3 h-full hover:border-sky-500 border border-transparent flex items-center justify-center transition-all rounded-full cursor-pointer hover:bg-sky-500/20"
         onClick={() => setTheme("dark")}
-      />
+      >
+        <HiOutlineMoon className="size-6" />
+      </div>
     );
   }
 }
