@@ -3,6 +3,7 @@
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import ThemeSwitch from "./theme-switch";
+import Link from "next/link";
 
 export default function Startpage() {
   const router = useRouter();
@@ -26,12 +27,18 @@ export default function Startpage() {
         onChange={(e) => setUsername(e.target.value)}
         className="border min-w-64 border-foreground rounded p-2 w-full focus:outline-double focus:outline-4 focus:outline-offset-2 focus:outline-sky-500 text-sky-500"
       />
-      <button
+      {/* <button
         type="submit"
         className="h-full rounded bg-foreground text-background p-2 hover:bg-sky-500 hover:cursor-pointer transition-all"
       >
         Submit
-      </button>
+      </button> */}
+      <Link
+        className="inline-block h-full rounded bg-foreground text-background p-2 hover:bg-sky-500 hover:cursor-pointer transition-all"
+        href={`/${username}`}
+      >
+        Submit!
+      </Link>
       <div className="px-2">
         <ThemeSwitch />
       </div>
