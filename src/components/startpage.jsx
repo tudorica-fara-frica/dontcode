@@ -11,7 +11,7 @@ export default function Startpage() {
 
   function handleSubmit(e) {
     e.preventDefault();
-    // router.push(`/${username}`);
+    router.push(`/${username}`);
     setUsername("");
   }
 
