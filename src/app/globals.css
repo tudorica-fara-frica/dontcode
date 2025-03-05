@@ -26,8 +26,8 @@ body {
 }
 
 .dark body {
-  --foreground: #000;
-  --background: #fff;
+  --background: #000;
+  --foreground: #fff;
 }
 
 .loader {
