@@ -11,7 +11,7 @@ export default function Startpage() {
 
   function handleSubmit(e) {
     e.preventDefault();
-    router.push(`/${username}`);
+    // router.push(`/${username}`);
     setUsername("");
   }
 
@@ -36,6 +36,7 @@ export default function Startpage() {
       <Link
         className="inline-block h-full rounded bg-foreground text-background p-2 hover:bg-sky-500 hover:cursor-pointer transition-all"
         href={`/${username}`}
+        onClick={handleSubmit}
       >
         Submit!
       </Link>
