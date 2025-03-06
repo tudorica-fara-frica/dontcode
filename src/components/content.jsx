@@ -9,6 +9,7 @@ export const mono = Geist_Mono({
 import { saveContentForUsername } from "@/lib/utils";
 import { useEffect, useRef, useState } from "react";
 import ThemeSwitch from "./theme-switch";
+import toast from "react-hot-toast";
 
 export default function CodeBox({ content, username }) {
   const [contentCopy, setContentCopy] = useState(content);
@@ -51,8 +52,21 @@ export default function CodeBox({ content, username }) {
 
   async function handleSave() {
     try {
-      await saveContentForUsername({ content: contentCopy, username });
+      const data = await saveContentForUsername({
+        content: contentCopy,
+        username,
+      });
+      toast.promise(
+        async () =>
+          await saveContentForUsername({ content: contentCopy, username }),
+        {
+          loading: "saving your sh*t",
+          success: "saved",
+          error: "Oopsy, made an oopsy",
+        }
+      );
     } catch (e) {
+      toast.error("HAHAH, failed to save");
       console.error(e);
     }
   }

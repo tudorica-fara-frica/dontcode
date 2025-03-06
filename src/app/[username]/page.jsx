@@ -1,6 +1,7 @@
 import CodeBox from "@/components/content";
 import { getContentForUsername } from "@/lib/utils";
 import { connection } from "next/server";
+import { Toaster } from "react-hot-toast";
 
 export default async function Content({ params }) {
   await connection();
@@ -13,6 +14,9 @@ export default async function Content({ params }) {
 
   return (
     <>
+      <div>
+        <Toaster />
+      </div>
       <CodeBox content={content} username={username} />
     </>
   );
