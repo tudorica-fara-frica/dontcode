@@ -15,20 +15,20 @@ export default function CodeBox({ content, username }) {
   const [contentCopy, setContentCopy] = useState(content);
   const timerRef = useRef(null);
 
-  useEffect(() => {
-    const handleKeyDown = (event) => {
-      if ((event.ctrlKey || event.metaKey) && event.key === "s") {
-        event.preventDefault();
-        handleSave();
-      }
-    };
+  // useEffect(() => {
+  //   const handleKeyDown = (event) => {
+  //     if ((event.ctrlKey || event.metaKey) && event.key === "s") {
+  //       event.preventDefault();
+  //       handleSave();
+  //     }
+  //   };
 
-    window.addEventListener("keydown", handleKeyDown);
+  //   window.addEventListener("keydown", handleKeyDown);
 
-    return () => {
-      window.removeEventListener("keydown", handleKeyDown);
-    };
-  }, []);
+  //   return () => {
+  //     window.removeEventListener("keydown", handleKeyDown);
+  //   };
+  // }, []);
 
   useEffect(() => {
     if (timerRef.current) {
@@ -37,6 +37,7 @@ export default function CodeBox({ content, username }) {
 
     timerRef.current = setTimeout(() => {
       handleSave();
+      console.log(contentCopy);
     }, 3000);
 
     return () => {
@@ -51,11 +52,13 @@ export default function CodeBox({ content, username }) {
   }
 
   async function handleSave() {
+    console.log(contentCopy);
     try {
-      const data = await saveContentForUsername({
-        content: contentCopy,
-        username,
-      });
+      // await saveContentForUsername({
+      //   content: contentCopy,
+      //   username,
+      // });
+      // console.log(contentCopy);
       toast.promise(
         async () =>
           await saveContentForUsername({ content: contentCopy, username }),
@@ -65,6 +68,7 @@ export default function CodeBox({ content, username }) {
           error: "Oopsy, made an oopsy",
         }
       );
+      // toast.success("saved your sh*t");
     } catch (e) {
       toast.error("HAHAH, failed to save");
       console.error(e);
